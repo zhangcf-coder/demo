@@ -4,7 +4,6 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import cn.afterturn.easypoi.excel.annotation.ExcelIgnore;
 import cn.afterturn.easypoi.excel.annotation.ExcelTarget;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

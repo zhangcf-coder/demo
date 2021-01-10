@@ -24,3 +24,12 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 #    schema:
 #      - classpath:department.sql
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    enabled: true
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
