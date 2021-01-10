@@ -54,10 +54,14 @@ public class AlgorithmServiceImpl {
         int a = scanner.nextInt();
         int b = scanner.nextInt();
         int c = scanner.nextInt();
+        // 总分钟数 % 60 最终分钟数
         int i = ( c + b ) % 60;
+        // 总分钟数 / 60 分钟折合后的小时数
         int k = ( c + b ) / 60;
-        int m = a + k;
-        System.out.println("小时=" + (m%24));
+        // 输入小时数 + 分钟折合后的小时数 = 总小时数
+        // 总小时数 % 24 = 答案需要输出的小时数
+        int m = (a + k) % 24;
+        System.out.println("小时=" + m);
         System.out.println("分钟=" + i);
     }
 

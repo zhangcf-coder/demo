@@ -1,10 +1,11 @@
 spring:
   datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://49.232.211.149:3306/demo
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      username: root
+      password: root
+      url: jdbc:mysql://49.232.211.149:3306/demo
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
 
     initialSize: 5
     minIdle: 5
@@ -33,3 +34,10 @@ spring:
     suffix: .html
     servlet:
       content-type: text/html
+#配置mybatis
+mybatis:
+  #扫描xml文件
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #开启驼峰命名法
+    map-underscore-to-camel-case: true
