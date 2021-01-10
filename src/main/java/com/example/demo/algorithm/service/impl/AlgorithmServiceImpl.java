@@ -3,6 +3,8 @@ package com.example.demo.algorithm.service.impl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Scanner;
+
 @Service
 public class AlgorithmServiceImpl {
 
@@ -36,8 +38,30 @@ public class AlgorithmServiceImpl {
         return 0;
     }
 
+    /**
+     * 问题描述
+     * 　　现在时间是 a 点 b 分，请问 t 分钟后，是几点几分？
+     * 输入格式
+     * 　　输入的第一行包含一个整数 a。
+     * 　　第二行包含一个整数 b。
+     * 　　第三行包含一个整数 t。
+     * 输出格式
+     * 　　输出第一行包含一个整数，表示结果是几点。
+     * 　　第二行包含一个整数，表示结果是几分。
+     */
+    public static void calculateTime(){
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int i = ( c + b ) % 60;
+        int k = ( c + b ) / 60;
+        int m = a + k;
+        System.out.println("小时=" + (m%24));
+        System.out.println("分钟=" + i);
+    }
+
     public static void main(String args[]){
-        int i = calculateAge();
-        System.out.println(i);
+        calculateTime();
     }
 }
