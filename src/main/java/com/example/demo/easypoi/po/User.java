@@ -1,4 +1,4 @@
-package com.example.demo.easypoi.PO;
+package com.example.demo.easypoi.po;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import cn.afterturn.easypoi.excel.annotation.ExcelIgnore;

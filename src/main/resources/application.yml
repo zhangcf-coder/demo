@@ -1,12 +1,16 @@
 spring:
   datasource:
-    druid:
+    primary:
       username: root
-      password: root
-      url: jdbc:mysql://49.232.211.149:3306/demo
+      password: 123
+      jdbc-url: jdbc:mysql://49.232.211.129:3306/demo
       driver-class-name: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
-
+    secondary:
+      username: triger
+      password: triger
+      jdbc-url: jdbc:oracle:thin:@154.31.71.22:8001:TEST
+      driver-class-name: oracle.jdbc.OracleDriver
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -23,8 +27,8 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-#    schema:
-#      - classpath:department.sql
+  #    schema:
+  #      - classpath:department.sql
   thymeleaf:
     cache: false
     encoding: UTF-8
