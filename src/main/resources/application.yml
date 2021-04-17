@@ -2,14 +2,14 @@ spring:
   datasource:
     primary:
       username: root
-      password: 123
-      jdbc-url: jdbc:mysql://49.232.211.129:3306/demo
+      password: root@123
+      jdbc-url: jdbc:mysql://bpit-finace-dev-mysql-master0001.bcc-szwg.baidu.com:8806/cmsseal
       driver-class-name: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
     secondary:
-      username: triger
-      password: triger
-      jdbc-url: jdbc:oracle:thin:@154.31.71.22:8001:TEST
+      username: cms
+      password: cms_1234
+      jdbc-url: jdbc:oracle:thin:@172.31.71.203:8001:DWTEST
       driver-class-name: oracle.jdbc.OracleDriver
     initialSize: 5
     minIdle: 5

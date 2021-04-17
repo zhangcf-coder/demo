@@ -1,5 +1,8 @@
 package com.example.demo.mybatis.controller;
 
+import com.example.demo.easypoi.po.Department;
+import com.example.demo.easypoi.po.User;
+import com.example.demo.vo.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
@@ -7,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,16 +33,15 @@ public class DoubleDataSource {
     protected JdbcTemplate jdbcTemplate2;
 
     @RequestMapping("/test3")
-    public List<Map<String, Object>> test3(){
-        String sql = "SELECT * FROM department";
+    public ResponseResult test3(@RequestBody Department department){
+        String sql = "SELECT * FROM cms_cfca_bothseal_record";
         List<Map<String, Object>> maps = jdbcTemplate2.queryForList(sql);
-        return maps;
+        return new ResponseResult(maps);
     }
 
     @RequestMapping("/test4")
-    public List<Map<String, Object>> test4(){
+    public ResponseResult test4(){
         String sql = "SELECT * FROM user";
         List<Map<String, Object>> maps = jdbcTemplate1.queryForList(sql);
-        return maps;
-    }
+        return new ResponseResult(maps); }
 }
