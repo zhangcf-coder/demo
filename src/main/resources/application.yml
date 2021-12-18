@@ -3,32 +3,43 @@ spring:
     primary:
       username: root
       password: 123
-      jdbc-url: jdbc:mysql://49.232.211.129:3306/demo
-      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://49.232.211.129:3306/demo
+      driverClassName: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
     secondary:
       username: triger
       password: triger
-      jdbc-url: jdbc:oracle:thin:@154.31.71.22:8001:TEST
-      driver-class-name: oracle.jdbc.OracleDriver
-    initialSize: 5
-    minIdle: 5
-    maxActive: 20
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-    filters: stat,wall,log4j
-    maxPoolPreparedStatementPerConnectionSize: 20
-    useGlobalDataSourceStat: true
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-  #    schema:
-  #      - classpath:department.sql
+      url: jdbc:oracle:thin:@154.31.71.22:8001:TEST
+      driverClassName: oracle.jdbc.OracleDriver
+    druid:
+      # 连接池初始化大小，最小，最大
+      initial-size: 20
+      min-idle: 50
+      max-active: 350
+      # 获取链接配置时，最大等待时间
+      max-wait: 5000
+      # 空闲链接关闭检测时间 ms
+      time-between-eviction-runs-millis: 30000
+      # 单个链接的最小生存时间
+      min-evictable-idle-time-millis: 60000
+      # 链接存活验证语句
+      validation-query: SELECT 'x' FROM DUALS
+      # 是否需要在空闲一段时间后检测存活
+      test-while-idle: true
+      # 取出时是否需要检测存活
+      test-on-borrow: true
+      # 放回时时候需要检测存活
+      test-on-return: false
+      # 开启PreparedStatement 指定每个链接最多挂载 PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 监控打印SQL的 filters wall用于防火墙
+      filters:
+        commons-log.connection-logger-name: stat,wall,log4j
+      # 开启慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    #    schema:
+    #      - classpath:department.sql
   thymeleaf:
     cache: false
     encoding: UTF-8
