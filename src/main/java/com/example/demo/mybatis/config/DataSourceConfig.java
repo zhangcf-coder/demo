@@ -20,13 +20,6 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "secondaryDataSource")
-    @Qualifier("secondaryDataSource")
-    @Primary
-    @ConfigurationProperties(prefix="spring.datasource.secondary")
-    public DataSource secondaryDataSource() {
-        return DataSourceBuilder.create().build();
-    }
 
     @Bean(name = "primaryJdbcTemplate")
     public JdbcTemplate primaryJdbcTemplate(
@@ -34,10 +27,18 @@ public class DataSourceConfig {
         return new JdbcTemplate(dataSource);
     }
 
-    @Bean(name = "secondaryJdbcTemplate")
+
+    @Bean
     @Primary
-    public JdbcTemplate secondaryJdbcTemplate(
-            @Qualifier("secondaryDataSource") DataSource dataSource) {
+    @ConfigurationProperties(prefix="spring.datasource.secondary")
+    public DataSource secondaryDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+
+    @Bean
+    @Primary
+    public JdbcTemplate secondaryJdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 
