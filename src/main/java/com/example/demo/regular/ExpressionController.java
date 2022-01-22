@@ -5,6 +5,13 @@ import java.util.regex.Pattern;
 
 public class ExpressionController {
 
+    /**
+     *  ? 0次或一次
+     *  * 0次 一次 或多次
+     *  + 1次或多次
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         String r = "${123}";
         String pattern = "\\$\\{(.+)\\}";

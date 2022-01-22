@@ -2,10 +2,7 @@ package com.example.demo.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.util.StringUtil;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Size;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
