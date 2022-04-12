@@ -21,4 +21,9 @@ public class ResponseResult implements Serializable {
         this.message = "success";
         this.data = data;
     }
+
+    public static ResponseResult ok(Object data) {
+        ResponseResult result = new ResponseResult(data);
+        return result;
+    }
 }

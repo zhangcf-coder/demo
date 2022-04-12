@@ -1,12 +1,7 @@
 package com.example.demo.algorithm;
 
-import com.google.common.collect.Lists;
-import org.apache.commons.collections4.CollectionUtils;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 
