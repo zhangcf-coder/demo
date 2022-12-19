@@ -1,10 +1,12 @@
+server:
+  port: 8083
 spring:
   redis:
     database: 0
     timeout: 3000
-#    sentinel:    #哨兵模式
-#      master: mymaster #主服务器所在集群名称
-#      nodes: 82.157.171.43:26379,82.157.171.43:26380,82.157.171.43:26381
+    #    sentinel:    #哨兵模式
+    #      master: mymaster #主服务器所在集群名称
+    #      nodes: 82.157.171.43:26379,82.157.171.43:26380,82.157.171.43:26381
     cluster:
       nodes: 82.157.171.43:8001,82.157.171.43:8002,82.157.171.43:8003,82.157.171.43:8004,82.157.171.43:8005,82.157.171.43:8006
     lettuce:
@@ -13,47 +15,59 @@ spring:
         min-idle: 10
         max-active: 100
         max-wait: 1000
-#  datasource:
-#    primary:
-#      username: root
-#      password: root@123
-#      jdbcUrl: jdbc:mysql://bpit-finace-dev-mysql-master0001.bcc-szwg.baidu.com:8806/legal_test
-#      driverClassName: com.mysql.jdbc.Driver
-#      type: com.alibaba.druid.pool.DruidDataSource
-#    secondary:
-#      username: root
-#      password: root@123
-#      jdbcUrl: jdbc:mysql://bpit-finace-dev-mysql-master0001.bcc-szwg.baidu.com:8806/legal_test
-##      driverClassName: com.alibaba.druid.pool.DruidDataSource
-#    druid:
-#      # 连接池初始化大小，最小，最大
-#      initial-size: 20
-#      min-idle: 50
-#      max-active: 350
-#      # 获取链接配置时，最大等待时间
-#      max-wait: 5000
-#      # 空闲链接关闭检测时间 ms
-#      time-between-eviction-runs-millis: 30000
-#      # 单个链接的最小生存时间
-#      min-evictable-idle-time-millis: 60000
-#      # 链接存活验证语句
-#      validation-query: SELECT 'x' FROM DUALS
-#      # 是否需要在空闲一段时间后检测存活
-#      test-while-idle: true
-#      # 取出时是否需要检测存活
-#      test-on-borrow: true
-#      # 放回时时候需要检测存活
-#      test-on-return: false
-#      # 开启PreparedStatement 指定每个链接最多挂载 PSCache的大小
-#      pool-prepared-statements: true
-#      max-pool-prepared-statement-per-connection-size: 20
-#      # 监控打印SQL的 filters wall用于防火墙
-#      filters:
-#        commons-log.connection-logger-name: stat,wall,log4j
-#      # 开启慢SQL记录
-#      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    #    schema:
-    #      - classpath:department.sql
+  activemq:
+    # activemq url
+    broker-url: tcp://127.0.0.1:61616
+    #broker-url: tcp://10.202.1.80:61616
+    in-memory: true
+    pool:
+      # 如果此处设置为true，需要添加activemq-pool的依赖包，否则会自动配置失败，无法注入JmsMessagingTemplate
+      enabled: false
+    user: system
+    password: manager
+      #  jms:
+      #    pub-sub-domain: true
+  datasource:
+    primary:
+      username: root
+      password: root@1234
+      jdbcUrl: jdbc:mysql://bpit-finace-dev-mysql-master0001.bcc-szwg.baidu.com:8806/legal_test
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+    secondary:
+      username: root
+      password: root@123
+      jdbcUrl: jdbc:mysql://bpit-finace-dev-mysql-master0001.bcc-szwg.baidu.com:8806/legal_test
+    #      driverClassName: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 连接池初始化大小，最小，最大
+      initial-size: 20
+      min-idle: 50
+      max-active: 350
+      # 获取链接配置时，最大等待时间
+      max-wait: 5000
+      # 空闲链接关闭检测时间 ms
+      time-between-eviction-runs-millis: 30000
+      # 单个链接的最小生存时间
+      min-evictable-idle-time-millis: 60000
+      # 链接存活验证语句
+      validation-query: SELECT 'x' FROM DUALS
+      # 是否需要在空闲一段时间后检测存活
+      test-while-idle: true
+      # 取出时是否需要检测存活
+      test-on-borrow: true
+      # 放回时时候需要检测存活
+      test-on-return: false
+      # 开启PreparedStatement 指定每个链接最多挂载 PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 监控打印SQL的 filters wall用于防火墙
+      filters:
+        commons-log.connection-logger-name: stat,wall,log4j
+      # 开启慢SQL记录
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    schema:
+      - classpath:department.sql
   thymeleaf:
     cache: false
     encoding: UTF-8
@@ -102,3 +116,11 @@ mybatis:
   configuration:
     #开启驼峰命名法
     map-underscore-to-camel-case: true
+rocketmq:
+  name-server: 43.138.46.170:9876
+  producer:
+    group: springbootGroup
+    topic: topictest
+    sync-tag: synctag
+    async-tag: asynctag
+    oneway-tag: onewaytag

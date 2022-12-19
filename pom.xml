@@ -270,6 +270,7 @@
 <!--            <version>4.7.1</version>-->
 <!--        </dependency>-->
 
+        <!-- mybatis相关jar 开始 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -286,6 +287,20 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
+        <!-- mybatis相关jar 结束 -->
+
+        <!-- oauth2授权相关jar 开始 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.4.RELEASE</version>
+        </dependency>
+        <!-- oauth2授权相关jar 结束 -->
     </dependencies>
 
     <build>
