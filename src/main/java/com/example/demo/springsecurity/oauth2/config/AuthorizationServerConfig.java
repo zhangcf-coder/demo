@@ -1,4 +1,4 @@
-package com.example.demo.oauth2.config;
+package com.example.demo.springsecurity.oauth2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .redirectUris("http://www.baidu.com")
                 //配置申请的权限范围
                 .scopes("all")
-                //配置grant_type，表示授权类型
-                .authorizedGrantTypes("authorization_code");
+                // 配置grant_type，表示授权类型
+                // implicit 支持简化模式
+                .authorizedGrantTypes("authorization_code", "implicit");
     }
 }

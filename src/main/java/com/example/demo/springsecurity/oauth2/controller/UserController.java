@@ -1,4 +1,4 @@
-package com.example.demo.oauth2.controller;
+package com.example.demo.springsecurity.oauth2.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
